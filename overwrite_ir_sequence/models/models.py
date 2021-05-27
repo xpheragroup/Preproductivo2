@@ -28,12 +28,14 @@ class IrSequence(models.Model):
                 company_act = values['company_id']
                 ex_name = len(self.env['ir.sequence'].search([('name', '=', name_act),('company_id.id', '=', company_act)]))
                 if ex_name > 1:
-                    raise UserError(_('El nombre ' + name_act + ' ya existe.'))
+                    print("")
+                    #raise UserError(_('El nombre ' + name_act + ' ya existe.'))
             else:
                 name_act = values['name']
                 ex_name = len(self.env['ir.sequence'].search([('name', '=', name_act)]))
                 if ex_name > 1:
-                    raise UserError(_('El nombre ' + name_act + ' ya existe.'))
+                    print("")
+                    #raise UserError(_('El nombre ' + name_act + ' ya existe.'))
         
         if values.get('prefix'):
             if values.get('company_id'):
@@ -41,12 +43,14 @@ class IrSequence(models.Model):
                 company_act = values['company_id']
                 ex_prefix = len(self.env['ir.sequence'].search([('prefix', '=', prefix_act),('company_id.id', '=', company_act)]))
                 if ex_prefix > 1:
-                    raise UserError(_('El prefijo ' + prefix_act + ' ya existe.'))
+                    print("")
+                    #raise UserError(_('El prefijo ' + prefix_act + ' ya existe.'))
             else:
                 prefix_act = values['prefix']
                 ex_prefix = len(self.env['ir.sequence'].search([('prefix', '=', prefix_act)]))
                 if ex_prefix > 1:
-                    raise UserError(_('El prefijo ' + prefix_act + ' ya existe.'))
+                    print("")
+                    #raise UserError(_('El prefijo ' + prefix_act + ' ya existe.'))
         return seq
 
     def write(self, values):
@@ -57,12 +61,14 @@ class IrSequence(models.Model):
                 company_act = values['company_id']
                 ex_name = len(self.env['ir.sequence'].search([('name', '=', name_act),('company_id.id', '=', company_act)]))
                 if ex_name > 1:
-                    raise UserError(_('El nombre ' + name_act + ' ya existe.'))
+                    print("")
+                    #raise UserError(_('El nombre ' + name_act + ' ya existe.'))
             else:
                 name_act = values['name']
                 ex_name = len(self.env['ir.sequence'].search([('name', '=', name_act)]))
                 if ex_name > 1:
-                    raise UserError(_('El nombre ' + name_act + ' ya existe.'))
+                    print("")
+                    #raise UserError(_('El nombre ' + name_act + ' ya existe.'))
         
         if values.get('prefix'):
             if values.get('company_id'):
@@ -70,12 +76,14 @@ class IrSequence(models.Model):
                 company_act = values['company_id']
                 ex_prefix = len(self.env['ir.sequence'].search([('prefix', '=', prefix_act),('company_id.id', '=', company_act)]))
                 if ex_prefix > 1:
-                    raise UserError(_('El prefijo ' + prefix_act + ' ya existe.'))
+                    print("")
+                    #raise UserError(_('El prefijo ' + prefix_act + ' ya existe.'))
             else:
                 prefix_act = values['prefix']
                 ex_prefix = len(self.env['ir.sequence'].search([('prefix', '=', prefix_act)]))
                 if ex_prefix > 1:
-                    raise UserError(_('El prefijo ' + prefix_act + ' ya existe.'))             
+                    print("")
+                    #raise UserError(_('El prefijo ' + prefix_act + ' ya existe.'))             
         return res
     
     def copy(self, default=None):
