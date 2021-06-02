@@ -60,18 +60,19 @@ class Company(models.Model):
                     'product_id': ldm.product_id.id,
                     'product_qty': 1.0,
                     'type': 'normal',
+                    'bom_line_ids': [(6, 0, [p.id for p in ldm.bom_line_ids])],
                 })
 
-                for linea_bom in ldm.bom_line_ids:
-                    BomLine.create({
-                        'company_id': self.id,
-                        'bom_id': bom_created.id,
-                        'product_id': linea_bom.product_tmpl_id.product_variant_id.id,
-                        'product_qty_display': linea_bom.product_qty_display,
-                        'product_uom_id_display': linea_bom.product_uom_id_display.id,
-                        'product_uom_id': linea_bom.product_uom_id.id,
-                        #'product_uom_id': linea_bom.product_id.uom_id.id,
-                    })
+                # for linea_bom in ldm.bom_line_ids:
+                #     BomLine.create({
+                #         'company_id': self.id,
+                #         'bom_id': bom_created.id,
+                #         'product_id': linea_bom.product_tmpl_id.product_variant_id.id,
+                #         'product_qty_display': linea_bom.product_qty_display,
+                #         'product_uom_id_display': linea_bom.product_uom_id_display.id,
+                #         'product_uom_id': linea_bom.product_uom_id.id,
+                #         #'product_uom_id': linea_bom.product_id.uom_id.id,
+                #     })
                 
         else:
             raise UserError(_("No se encuentra ninguna lista de materiales asociada a la companía seleccionada."))
