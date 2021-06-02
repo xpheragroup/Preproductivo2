@@ -60,7 +60,8 @@ class Company(models.Model):
                     'product_id': ldm.product_id.id,
                     'product_qty': 1.0,
                     'type': 'normal',
-                    'bom_line_ids': [(6, 0, [p.id for p in ldm.bom_line_ids])],
+                    #'bom_line_ids': [(6, 0, [p.id for p in ldm.bom_line_ids])],
+                    'bom_line_ids': [(4, p.id) for p in ldm.bom_line_ids],
                 })
 
                 # for linea_bom in ldm.bom_line_ids:
