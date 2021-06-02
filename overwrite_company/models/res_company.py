@@ -57,7 +57,7 @@ class Company(models.Model):
                 })
 
                 for linea_bom in ldm.bom_line_ids:
-                    
+
                     line_qty = linea_bom.product_uom_id._compute_quantity(linea_bom.product_qty, linea_bom.product_id.uom_id)
 
                     BomLine.create({
@@ -65,7 +65,7 @@ class Company(models.Model):
                         'bom_id': bom_created.id,
                         'product_id': linea_bom.product_tmpl_id.product_variant_id.id,
                         'product_qty': line_qty,
-                        'product_uom_id': linea_bom.product_uom_id.id,
+                        #'product_uom_id': linea_bom.product_uom_id.id,
                     })
                 
         else:
