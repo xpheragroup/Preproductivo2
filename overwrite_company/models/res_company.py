@@ -65,7 +65,7 @@ class Company(models.Model):
                 })
 
                 for linea_bom in ldm.bom_line_ids:
-                    linea_com_copy = linea_bom.copy()
+                    linea_bom_copy = linea_bom.copy()
                     linea_bom_copy.company_id = self.id
                     linea_bom_copy.bom_id = bom_created.id
 
