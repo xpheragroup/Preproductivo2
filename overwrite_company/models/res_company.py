@@ -57,12 +57,19 @@ class Company(models.Model):
                 })
 
                 for linea_bom in ldm.bom_line_ids:
+                    # _logger.critical("COPY: LÍNEA BOM: linea_bom")
+                    # _logger.critical(linea_bom.display_name)
+                    # _logger.critical(linea_bom.product_qty)
+                    # _logger.critical(linea_bom.product_uom_id)uom_unit_id
+
+                    line_qty = linea_bom.product_uom_id._compute_quantity(linea_bom.product_qty, linea_bom.product_id.uom_id)
+
                     BomLine.create({
                         'company_id': self.id,
                         'bom_id': bom_created.id,
                         'product_id': linea_bom.product_tmpl_id.product_variant_id.id,
-                        'product_qty': linea_bom.product_qty,
-                        'product_uom_id': linea_bom.product_uom_id.id,
+                        'product_qty': line_qty,
+                        'product_uom_id': linea_bom.product_id.uom_id,
                     })
                 
         else:
