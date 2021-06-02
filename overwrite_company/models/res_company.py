@@ -69,7 +69,6 @@ class Company(models.Model):
                         'bom_id': bom_created.id,
                         'product_id': linea_bom.product_tmpl_id.product_variant_id.id,
                         'product_qty': line_qty,
-                        'product_uom_id': linea_bom.product_uom_id.id,
                         'product_qty_display': linea_bom.product_qty_display,
                         'product_uom_id_display': linea_bom.product_uom_id_display.id,
 
