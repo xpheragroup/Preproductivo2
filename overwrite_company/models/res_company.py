@@ -56,10 +56,10 @@ class Company(models.Model):
                     'type': 'normal',
                 })
 
-                line_qty = linea_bom.product_uom_id._compute_quantity(linea_bom.product_qty, linea_bom.product_id.uom_id)
-
-
                 for linea_bom in ldm.bom_line_ids:
+                    
+                    line_qty = linea_bom.product_uom_id._compute_quantity(linea_bom.product_qty, linea_bom.product_id.uom_id)
+
                     BomLine.create({
                         'company_id': self.id,
                         'bom_id': bom_created.id,
