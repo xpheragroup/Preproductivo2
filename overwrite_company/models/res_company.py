@@ -57,6 +57,7 @@ class Company(models.Model):
                     'company_id': self.id,
                     'picking_type_id': picking_type_id.id,
                     'product_tmpl_id': ldm.product_tmpl_id.id,
+                    'product_id': ldm.product_id.id,
                     'product_qty': 1.0,
                     'type': 'normal',
                 })
