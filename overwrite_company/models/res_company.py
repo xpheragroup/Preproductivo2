@@ -41,15 +41,21 @@ class Company(models.Model):
              " * LdM Copiada: La lista de materiales se ha copiado de la Compañía copia LdM seleccionada.")
 
     def action_copy_ldm(self):
+        self.state = 'copied'
+        _logger.critical("LdM Copiada.")
 
         if self.copy_ldm:
-
+            # warehouse = self.warehouse_id #and self.warehouse_id.company_id.id == self.id and self.warehouse_id or False
+            # picking_type_id = self.env['stock.picking.type'].search([
+            #                         ('warehouse_id', '=', warehouse.id), 
+            #                         ('company_id', '=', self.id)], limit=1)
             BomLine = self.env['mrp.bom.line']
 
             for ldm in self.copy_ldm:
                 # Create BOM
                 bom_created = self.env['mrp.bom'].create({
                     'company_id': self.id,
+                    #'picking_type_id': picking_type_id.id,
                     'product_tmpl_id': ldm.product_tmpl_id.id,
                     'product_id': ldm.product_id.id,
                     'product_qty': 1.0,
@@ -57,23 +63,16 @@ class Company(models.Model):
                 })
 
                 for linea_bom in ldm.bom_line_ids:
-
-                    line_qty = linea_bom.product_uom_id._compute_quantity(linea_bom.product_qty, linea_bom.product_id.uom_id)
-
                     BomLine.create({
                         'company_id': self.id,
                         'bom_id': bom_created.id,
                         'product_id': linea_bom.product_tmpl_id.product_variant_id.id,
-                        'product_qty': line_qty,
-                        #'product_uom_id': linea_bom.product_uom_id.id,
-                        
+                        'product_qty': linea_bom.product_qty,
                     })
                 
         else:
             raise UserError(_("No se encuentra ninguna lista de materiales asociada a la companía seleccionada."))
 
-
-        self.state = 'copied'
 
 
         return True
@@ -85,3 +84,5 @@ class Company(models.Model):
 
         if self.empresa_copy_ldm:
             self.copy_ldm = self.env['mrp.bom'].search([('company_id', '=', self.empresa_copy_ldm.id)])
+            _logger.critical("self.copy_ldm")
+            _logger.critical(self.copy_ldm)
