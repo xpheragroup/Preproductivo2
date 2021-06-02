@@ -61,8 +61,14 @@ class Company(models.Model):
                     'product_qty': 1.0,
                     'type': 'normal',
                     #'bom_line_ids': [(6, 0, [p.id for p in ldm.bom_line_ids])],
-                    'bom_line_ids': [(4, p.id) for p in ldm.bom_line_ids],
+                    #'bom_line_ids': [(4, p.id) for p in ldm.bom_line_ids],
                 })
+
+                for linea_bom in ldm.bom_line_ids:
+                    linea_com_copy = linea_bom.copy()
+                    linea_bom_copy.company_id = self.id
+                    linea_bom_copy.bom_id = bom_created.id
+
 
                 # for linea_bom in ldm.bom_line_ids:
                 #     BomLine.create({
