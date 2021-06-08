@@ -2132,7 +2132,7 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
-                'account_id': ref('co_puc_13551705'),
+                'account_id': ref('co_puc_13551710'),
             }),
         ]"/>
         <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
@@ -2144,7 +2144,7 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
-                'account_id': ref('co_puc_13551705'),
+                'account_id': ref('co_puc_13551710'),
             }),
         ]"/>
     </record>
@@ -2165,7 +2165,7 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
-                'account_id': ref('co_puc_13551705'),
+                'account_id': ref('co_puc_13551710'),
             }),
         ]"/>
         <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
@@ -2177,7 +2177,7 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
-                'account_id': ref('co_puc_13551705'),
+                'account_id': ref('co_puc_13551710'),
             }),
         ]"/>
     </record>
@@ -2198,7 +2198,7 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
-                'account_id': ref('co_puc_13551805'),
+                'account_id': ref('co_puc_13551810'),
             }),
         ]"/>
         <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
@@ -2210,7 +2210,7 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
-                'account_id': ref('co_puc_13551805'),
+                'account_id': ref('co_puc_13551810'),
             }),
         ]"/>
     </record>
@@ -2231,7 +2231,7 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
-                'account_id': ref('co_puc_13551805'),
+                'account_id': ref('co_puc_13551810'),
             }),
         ]"/>
         <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
@@ -2243,7 +2243,7 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
-                'account_id': ref('co_puc_13551805'),
+                'account_id': ref('co_puc_13551810'),
             }),
         ]"/>
     </record>
