@@ -633,7 +633,7 @@ class Picking(models.Model):
  
                 if code_oc_sc:
                     vals['origin_order'] = code_oc_sc
-                if code_sc[0:2] == 'OC':
+                if 'OC' in code_sc:
                     vals['origin_order'] = code_sc
                 #if code_oc_rint:
                     #vals['origin_order'] = code_oc_rint
