@@ -1010,7 +1010,7 @@ class StockQuant(models.Model):
 
     cost_unit = fields.Monetary(string='Costo Promedio del Lote', compute='_compute_cost_unit')
     cost_unit_average = fields.Monetary(string='Costo Promedio del Producto por Almacén', compute='_compute_cost_unit_average')
-    value_average = fields.Monetary(string='Valor Promedio', compute='_value_average')
+    value_average = fields.Monetary(string='Costo Total del Almacén', compute='_value_average')
 
     lot_id = fields.Many2one(
         'stock.production.lot', 'Lot/Serial Number', index=True,
