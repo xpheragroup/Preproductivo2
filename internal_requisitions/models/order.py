@@ -21,7 +21,7 @@ class InternalOrder(models.Model):
      order_line = fields.One2many('sale.order.line', 'order_id', string='Order Lines', states={'cancel': [('readonly', True)], 'done': [('readonly', True)]}, copy=True, auto_join=True)
      invoice_count = fields.Integer(string='Invoice Count', compute='_get_invoiced', readonly=True)
 
-     utomatic_confirm = fields.Boolean("Confirmación Automatica", copy=False)
+     automatic_confirm = fields.Boolean("Confirmación Automatica", copy=False)
      date_confirm = fields.Datetime("Fecha y hora confirmación automática", copy=False)
 
      @api.onchange('partner_shipping_id')
