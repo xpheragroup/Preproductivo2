@@ -21,7 +21,8 @@ class InternalOrder(models.Model):
      order_line = fields.One2many('sale.order.line', 'order_id', string='Order Lines', states={'cancel': [('readonly', True)], 'done': [('readonly', True)]}, copy=True, auto_join=True)
      invoice_count = fields.Integer(string='Invoice Count', compute='_get_invoiced', readonly=True)
 
-     automatic_confirm = fields.Boolean("Confirmación Automatica")
+     utomatic_confirm = fields.Boolean("Confirmación Automatica", copy=False)
+     date_confirm = fields.Datetime("Fecha y hora confirmación automática", copy=False)
 
      @api.onchange('partner_shipping_id')
      def set_analytic_account(self):
@@ -30,6 +31,11 @@ class InternalOrder(models.Model):
                     self.analytic_account_id = self.env['account.analytic.account'].search([('partner_id.id','=',self.partner_shipping_id.id)],limit=1)
                else:
                     self.analytic_account_id = None
+
+     @api.onchange('automatic_confirm')
+     def reset_date_confirm(self):
+          if not self.automatic_confirm:
+               self.date_confirm = False
 
      def action_confirm(self):
           if self.partner_shipping_id:
