@@ -629,14 +629,14 @@ class Picking(models.Model):
             if self.origin:
                 code_sc = self.origin
                 code_oc_sc = self.env['purchase.order'].search([('codigo_solicitud_cotizacion','=',code_sc),],limit=1).name
-                #code_oc_rint = self.env['purchase.order'].search([('code_requisition','=',code_sc),],limit=1).name
+                code_oc_rint = self.env['purchase.order'].search([('code_requisition','=',code_sc),],limit=1).name
  
                 if code_oc_sc:
                     vals['origin_order'] = code_oc_sc
                 if 'OC' in code_sc:
                     vals['origin_order'] = code_sc
-                #if code_oc_rint:
-                    #vals['origin_order'] = code_oc_rint
+                if code_oc_rint:
+                    vals['origin_order'] = code_oc_rint
             vals['parent_id'] = False      
 
     @ api.model
@@ -1010,7 +1010,7 @@ class StockQuant(models.Model):
 
     cost_unit = fields.Monetary(string='Costo Promedio del Lote', compute='_compute_cost_unit')
     cost_unit_average = fields.Monetary(string='Costo Promedio del Producto por Almacén', compute='_compute_cost_unit_average')
-    value_average = fields.Monetary(string='Valor Promedio', compute='_value_average')
+    value_average = fields.Monetary(string='Costo Total del Almacén', compute='_value_average')
 
     lot_id = fields.Many2one(
         'stock.production.lot', 'Lot/Serial Number', index=True,

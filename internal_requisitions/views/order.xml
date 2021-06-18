@@ -6,6 +6,7 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='payment_term_id']" position="after">
                 <field name="automatic_confirm"/>
+                <field name="date_confirm" attrs="{'invisible': [('automatic_confirm', '=', False)]}"/>
             </xpath>
         </field>
     </record>
